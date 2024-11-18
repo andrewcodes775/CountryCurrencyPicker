@@ -13,27 +13,15 @@
  * limitations under the License.
  */
 
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+package com.theory.biscuit.countrycurrencypicker.library.Listener;
 
-buildscript {
-    repositories {
-        jcenter()
-        google()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:8.2.2'
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
-    }
-}
+import com.theory.biscuit.countrycurrencypicker.library.Country;
+import com.theory.biscuit.countrycurrencypicker.library.Currency;
 
-allprojects {
-    repositories {
-        jcenter()
-        google()
-    }
-}
+import java.io.Serializable;
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+public interface CountryCurrencyPickerListener extends Serializable {
+    void onSelectCountry(Country country);
+
+    void onSelectCurrency(Currency currency);
 }

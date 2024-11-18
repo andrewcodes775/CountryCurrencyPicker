@@ -129,7 +129,7 @@ Show and set up a dialog title. Dialog style can be changed by overriding the st
             pickerDialog.setDialogTitle(getString(R.string.country_currency_dialog_title));
 ```
 
-For more examples take a look into [MainActivity.java](/sample/src/main/java/com/scrounger/countrycurrencypicker/sample/MainActivity.java#L52)
+For more examples take a look into [MainActivity.java](/sample/src/main/java/com/theory/countrycurrencypicker/sample/MainActivity.java#L52)
 
 ## Customization
 To customize the style you can override the [layout files](/library/src/main/res/layout) or just override the [styles of library](/library/src/main/res/values/styles.xml) in your project

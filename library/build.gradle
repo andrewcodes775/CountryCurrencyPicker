@@ -16,14 +16,15 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 25
+    namespace 'com.theory.biscuit.countrycurrencypicker'  // Replace with your actual app package name
+    compileSdkVersion 33
     buildToolsVersion '26.0.2'
     defaultConfig {
         minSdkVersion 19
-        targetSdkVersion 25
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
     buildTypes {
         release {
@@ -31,20 +32,35 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    // For local JAR files in the 'libs' directory
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Espresso for UI testing
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0') {
         exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:design:25.3.1'
-    compile 'com.android.support:support-v4:25.3.1'
+    }
 
-    // https://github.com/google/guava
-    compile 'com.google.guava:guava:20.0'
+    // Android support libraries (appcompat, design, support-v4)
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'com.google.android.material:material:1.12.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
-    testCompile 'junit:junit:4.12'
-    compile 'org.jetbrains:annotations-java5:15.0'
+
+    // Guava library
+    implementation('com.google.guava:guava:22.0') {
+        exclude group: 'com.google.guava', module: 'listenablefuture'
+    }
+
+    // JUnit for testing
+    testImplementation 'junit:junit:4.12'
+
+    // JetBrains annotations
+//    implementation 'org.jetbrains:annotations-java5:15.0'
 }
